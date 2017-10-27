@@ -4,6 +4,8 @@ namespace frontend\models;
 
 use Yii;
 
+use frontend\models\ArticleTag;
+
 /**
  * This is the model class for table "article".
  *
@@ -46,4 +48,17 @@ class ArticleTagView extends \yii\db\ActiveRecord
             'cate_id' => 'ArticleCate ID',
         ];
     }
+
+    //获取标签下的文章
+    public function getTagArticle()
+    {
+        return $this->hasMany(Article::className(),['id'=>'article_id']);
+    }
+
+    //获取分类名
+    public function getTagsName()
+    {
+        return $this->hasMany(ArticleTag::className(),['id'=>'tag_id']);
+    }
+
 }

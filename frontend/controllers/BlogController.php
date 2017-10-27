@@ -40,7 +40,7 @@ class BlogController extends Controller
         $cateQuery = ArticleCate::find()->all();
         $tagQuery = ArticleTag::find()->all();
         $articleAndCate = Article::find()->with('cates')->asArray()->all();               //文章和分类数据
-        $pagination = new Pagination([                                                  //分页器
+        $pagination = new Pagination([                                                    //分页器
             'defaultPageSize' => 3,
             'totalCount' => $query->count(),
         ]);
@@ -66,14 +66,23 @@ class BlogController extends Controller
         $cateQuery = ArticleCate::find()->all();
         $tagQuery = ArticleTag::find()->all();
         $curArticleCate = ArticleCate::findOne($articleQuery['cate_id']);         //当前文章分类
-        $curArticleTags = ArticleTagView::find()->where(['article_id'=>$articleId])->asArray();
-        print_r($curArticleTags);
+
+        //获取当前文章的所有标签
+        $curTagsArr=array();
+        $curArticleTags = ArticleTagView::find()->with('tagsName')->where(['article_id'=>$articleId])->asArray()->all();
+
+        foreach ($curArticleTags as $curArticleTag){
+            $curTags =$curArticleTag['tagsName'][0];
+            array_push($curTagsArr,$curTags);
+        }
+
+
         return $this->render('detail', [
             'curArticle' => $articleQuery,
             'cates' => $cateQuery,
             'tags' => $tagQuery,
             'curCate' => $curArticleCate,
-            'curTags' => $curArticleTags
+            'curTag' => $curTagsArr
         ]);
     }
 
@@ -82,6 +91,9 @@ class BlogController extends Controller
     {
         $cateQuery = ArticleCate::find()->all();
         $tagQuery = ArticleTag::find()->all();
+        $articleAndCate = Article::find()->with('cates')->asArray()->all();               //文章和分类数据
+        print_r($articleAndCate);
+
         return $this->render('cate', [
             'cates' => $cateQuery,
             'tags' => $tagQuery,
@@ -91,11 +103,31 @@ class BlogController extends Controller
     //文章标签页
     public function actionTag()
     {
+        $tagId = Yii::$app->request->get('id');
+        $curTagName=ArticleTag::findOne(['id'=>$tagId]);
+        $curTagArticles = ArticleTagView::find()->with('tagArticle','tagsName')->where(['tag_id'=>$tagId])->asArray()->all();
+        $allTagArticles=ArticleTagView::find()->with('tagArticle','tagsName')->orderBy('id')->asArray()->all();
+
+        //判断是否存在标签id
+        $res=array();
+        if($tagId){
+            $curTagArticles=$curTagArticles;
+        }else{
+            $curTagArticles=$allTagArticles;
+        }
         $cateQuery = ArticleCate::find()->all();
         $tagQuery = ArticleTag::find()->all();
+
+        foreach ($curTagArticles as $key=>$curTagArticle){
+            $res[$curTagArticle['tag_id']][]=$curTagArticle;
+        }
+
+
         return $this->render('tag', [
             'cates' => $cateQuery,
             'tags' => $tagQuery,
+            'curTag'=>$curTagName['tag'],
+            'curTagArticle'=>$res
         ]);
     }
 

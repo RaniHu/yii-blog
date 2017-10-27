@@ -1,5 +1,10 @@
 @charset "UTF-8";
 /*背景图标*/
+.article-detail-tag-icon {
+  display: inline-block;
+  background: url("../../image/article-detail-tag.png") no-repeat center;
+  background-size: 100% 100%; }
+
 .article-time-icon {
   display: inline-block;
   background: url("../../image/article-time.png") no-repeat center;
@@ -58,7 +63,8 @@
       padding-right: 70px;
       box-sizing: border-box;
       /*=====当前文章列表=====*/
-      /*=====当前文章详细内容=====*/ }
+      /*=====当前文章详细内容=====*/
+      /*=====标签页=====*/ }
       #main .content-wrapper .left-content a {
         text-decoration: none;
         cursor: pointer; }
@@ -104,22 +110,65 @@
         font-weight: bold; }
       #main .content-wrapper .left-content .article-detail-box .article-attach-info {
         margin: 20px 0; }
-      #main .content-wrapper .left-content .article-detail-box .cate-name {
-        padding: 2px 5px;
-        font-size: 12px;
-        color: #2aabd2;
-        border: 1px solid #2aabd2;
-        border-radius: 5px; }
-      #main .content-wrapper .left-content .article-detail-box .article-pub-time {
-        padding-left: 5px;
-        font-size: 13px;
-        color: #666666; }
+        #main .content-wrapper .left-content .article-detail-box .article-attach-info .pubtime-cate {
+          float: left;
+          padding-left: 5px;
+          font-size: 12px;
+          color: #777; }
+          #main .content-wrapper .left-content .article-detail-box .article-attach-info .pubtime-cate .cate-name {
+            padding: 2px 5px;
+            font-size: 12px;
+            color: #FC354C;
+            border: 1px solid #FC354C;
+            border-radius: 5px; }
+          #main .content-wrapper .left-content .article-detail-box .article-attach-info .pubtime-cate .article-pub-time {
+            padding-left: 5px; }
+        #main .content-wrapper .left-content .article-detail-box .article-attach-info .cur-article-tag-all {
+          float: right;
+          font-size: 0; }
+          #main .content-wrapper .left-content .article-detail-box .article-attach-info .cur-article-tag-all .article-detail-tag-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 24px;
+            height: 24px; }
+          #main .content-wrapper .left-content .article-detail-box .article-attach-info .cur-article-tag-all ul {
+            display: inline-block;
+            vertical-align: middle; }
+            #main .content-wrapper .left-content .article-detail-box .article-attach-info .cur-article-tag-all ul li {
+              display: inline-block;
+              margin: 0 3px; }
+              #main .content-wrapper .left-content .article-detail-box .article-attach-info .cur-article-tag-all ul li a {
+                color: #666666;
+                font-size: 13px;
+                text-decoration: underline; }
+                #main .content-wrapper .left-content .article-detail-box .article-attach-info .cur-article-tag-all ul li a:hover {
+                  color: #2aabd2; }
       #main .content-wrapper .left-content .article-detail-box .cur-article-text {
         text-align: justify;
         color: #444;
         text-indent: 32px;
         line-height: 26px;
         font-size: 16px; }
+      #main .content-wrapper .left-content .tag-page-info .all-tag ul {
+        font-size: 0; }
+        #main .content-wrapper .left-content .tag-page-info .all-tag ul li {
+          display: inline-block; }
+          #main .content-wrapper .left-content .tag-page-info .all-tag ul li a {
+            display: block;
+            font-size: 13px;
+            padding: 5px 10px;
+            color: #1ABFBC;
+            border: 1px solid #1ABFBC;
+            border-radius: 8px;
+            margin: 5px; }
+      #main .content-wrapper .left-content .tag-page-info .tag-list {
+        margin-top: 20px; }
+        #main .content-wrapper .left-content .tag-page-info .tag-list .cur-tag-article-list {
+          list-style: circle; }
+          #main .content-wrapper .left-content .tag-page-info .tag-list .cur-tag-article-list li a {
+            font-size: 16px;
+            color: #444444;
+            margin: 10px 0; }
     #main .content-wrapper .right-sidebar {
       float: left;
       width: 25%;

@@ -50,10 +50,5 @@ class ArticleTag extends \yii\db\ActiveRecord
     }
 
 
-    //获取分类名
-    public function getTagsName()
-    {
-        return $this->hasMany(ArticleTagView::className(),['tag_id'=>'id']);
-    }
 
 }

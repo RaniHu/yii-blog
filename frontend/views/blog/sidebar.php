@@ -1,4 +1,7 @@
+<?php
+use yii\helpers\Url;
 
+?>
 <!--====右侧菜单栏====-->
 <div class="right-sidebar">
     <!--搜索框-->
@@ -20,7 +23,7 @@
         <h3><i class="article-tag-icon"></i> <span>标签</span></h3>
         <ul class="tag-list">
             <?php foreach ($tags as $tag): ?>
-            <li><a><i></i><?= $tag->tag ?></a></li>
+            <li><a href="<?= Url::to(['blog/tag', 'id' => $tag['id']]) ?>"><i></i><?= $tag->tag ?></a></li>
             <?php endforeach; ?>
 
         </ul>

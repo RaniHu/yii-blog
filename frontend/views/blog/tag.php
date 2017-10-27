@@ -1,3 +1,9 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
+
 <!--======头图======-->
 <div class="main-image tag-page">
 
@@ -10,23 +16,28 @@
     <div class="left-content">
 
         <!--所有标签-->
-        <div class="all-tag">
-            <ul>
-                <?php foreach ($tags as $tag): ?>
-                    <li><?= $tag->tag ?></li>
-                <? endforeach; ?>
-            </ul>
-        </div>
+        <div class="tag-page-info">
+<!--            <div class="all-tag">-->
+<!--                <ul>-->
+<!--                    --><?php //foreach ($tags as $tag): ?>
+<!--                        <li><a href="--><?//= Url::to(['blog/tag', 'id' => $tag['id']]) ?><!--">--><?//= $tag->tag ?><!--</a></li>-->
+<!--                    --><?// endforeach; ?>
+<!--                </ul>-->
+<!--            </div>-->
 
-        <!--按标签分类-->
-        <?php foreach ($tags as $tag): ?>
-            <div class="tag-list">
-                <h3><?= $tag->tag ?></h3>
-                <ul class="cur-tag-article-list">
-                    <li></li>
-                </ul>
-            </div>
-        <?php endforeach; ?>
+            <!--按标签分类-->
+            <?php foreach ($curTagArticle as $curTagArticles): ?>
+                <div class="tag-list">
+                    <h3><?= $curTagArticles[0]['tagsName'][0]['tag'] ?></h3>
+                    <ol class="cur-tag-article-list">
+                        <?php foreach ($curTagArticles as $curArticleInfo) : ?>
+                            <li><a href="<?= Url::to(['blog/detail', 'id' =>$curArticleInfo['article_id']]) ?>"><?= $curArticleInfo['tagArticle'][0]['article_title'] ?></a></li>
+                        <?php endforeach; ?>
+
+                    </ol>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 
     <!--右侧菜单栏-->

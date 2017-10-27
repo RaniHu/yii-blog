@@ -1,3 +1,9 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
+
 <!--======头图======-->
 <div class="main-image detail-page">
 
@@ -9,24 +15,32 @@
     <!-- ======左侧文章详情======-->
     <div class="left-content">
         <div class="article-detail-box">
-                <!--标题-->
-                <h1><?= $curArticle['article_title'] ?></h1>
+            <!--标题-->
+            <h1><?= $curArticle['article_title'] ?></h1>
+            <div class="article-attach-info clearFix">
                 <!--发布时间-->
-                <p class="article-attach-info">
-                    <span class="cate-name"><?= $curCate['cate']?></span>
+                <p class="pubtime-cate">
+                    <span class="cate-name"><?= $curCate['cate'] ?></span>
                     <span class="article-pub-time"><?= $curArticle->pub_date ?></span>
                 </p>
                 <!--tag标签-->
-                <ul class="cur-article-tag-all">
-                    <li><a></a></li>
+                <div class="cur-article-tag-all">
+                    <i class="article-detail-tag-icon"></i>
+                   <ul>
+                        <?php foreach ($curTag as $curTags) : ?>
+                            <li><a href="<?= Url::to(['blog/tag','id' => $curTags['id']]) ?>"><?= $curTags['tag'] ?> </a></li>
+                        <?php endforeach; ?>
                 </ul>
-                <!--文章内容-->
+                </div>
+            </div>
+
+            <!--文章内容-->
                 <div class="cur-article-text">
                     <?= $curArticle->article_content ?>
                 </div>
 
-        </div>
 
+        </div>
     </div>
 
     <!--======右侧菜单栏======-->

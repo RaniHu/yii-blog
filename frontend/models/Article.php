@@ -3,7 +3,8 @@
 namespace frontend\models;
 
 use Yii;
-use frontend\models\ArticleTag;
+use frontend\models\ArticleCate;
+use frontend\models\ArticleTagView;
 
 /**
  * This is the model class for table "article".
@@ -60,9 +61,11 @@ class Article extends \yii\db\ActiveRecord
     }
 
     //获取文章的分类
-    public function getTag()
+    public function getCates()
     {
-        return $this->hasMany(ArticleTag::className(),['article_id'=>'tag_id']);
+        return $this->hasOne(ArticleCate::className(),['id'=>'cate_id']);
+
     }
+
 }
 
