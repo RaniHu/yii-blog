@@ -1,5 +1,10 @@
 @charset "UTF-8";
 /*背景图标*/
+.article-notfound-icon {
+  display: inline-block;
+  background: url("../../image/article-notfound.png") no-repeat center;
+  background-size: 100% 100%; }
+
 .article-detail-tag-icon {
   display: inline-block;
   background: url("../../image/article-detail-tag.png") no-repeat center;
@@ -149,26 +154,41 @@
         text-indent: 32px;
         line-height: 26px;
         font-size: 16px; }
-      #main .content-wrapper .left-content .tag-page-info .all-tag ul {
-        font-size: 0; }
-        #main .content-wrapper .left-content .tag-page-info .all-tag ul li {
-          display: inline-block; }
-          #main .content-wrapper .left-content .tag-page-info .all-tag ul li a {
-            display: block;
-            font-size: 13px;
-            padding: 5px 10px;
-            color: #1ABFBC;
-            border: 1px solid #1ABFBC;
-            border-radius: 8px;
-            margin: 5px; }
-      #main .content-wrapper .left-content .tag-page-info .tag-list {
-        margin-top: 20px; }
-        #main .content-wrapper .left-content .tag-page-info .tag-list .cur-tag-article-list {
-          list-style: circle; }
-          #main .content-wrapper .left-content .tag-page-info .tag-list .cur-tag-article-list li a {
+      #main .content-wrapper .left-content .tag-page-info, #main .content-wrapper .left-content .cate-page-info {
+        padding: 15px 0; }
+        #main .content-wrapper .left-content .tag-page-info .article-notfound, #main .content-wrapper .left-content .cate-page-info .article-notfound {
+          margin-top: 40px;
+          text-align: center; }
+          #main .content-wrapper .left-content .tag-page-info .article-notfound .article-notfound-icon, #main .content-wrapper .left-content .cate-page-info .article-notfound .article-notfound-icon {
+            width: 100px;
+            height: 100px; }
+          #main .content-wrapper .left-content .tag-page-info .article-notfound .no-article-text, #main .content-wrapper .left-content .cate-page-info .article-notfound .no-article-text {
+            text-align: center;
             font-size: 16px;
-            color: #444444;
-            margin: 10px 0; }
+            margin-top: 10px; }
+        #main .content-wrapper .left-content .tag-page-info .list-block, #main .content-wrapper .left-content .cate-page-info .list-block {
+          margin-bottom: 45px;
+          padding-bottom: 15px;
+          border-bottom: 1px dashed #ccc; }
+          #main .content-wrapper .left-content .tag-page-info .list-block h3, #main .content-wrapper .left-content .cate-page-info .list-block h3 {
+            color: #0ABFBC;
+            margin-bottom: 20px; }
+          #main .content-wrapper .left-content .tag-page-info .list-block ul, #main .content-wrapper .left-content .cate-page-info .list-block ul {
+            padding-left: 15px; }
+            #main .content-wrapper .left-content .tag-page-info .list-block ul li, #main .content-wrapper .left-content .cate-page-info .list-block ul li {
+              color: #666;
+              list-style-type: disc; }
+              #main .content-wrapper .left-content .tag-page-info .list-block ul li a, #main .content-wrapper .left-content .cate-page-info .list-block ul li a {
+                display: block;
+                font-size: 15px;
+                color: #666;
+                margin-top: 10px; }
+                #main .content-wrapper .left-content .tag-page-info .list-block ul li a:hover, #main .content-wrapper .left-content .cate-page-info .list-block ul li a:hover {
+                  text-decoration: underline; }
+                #main .content-wrapper .left-content .tag-page-info .list-block ul li a .pub-time, #main .content-wrapper .left-content .cate-page-info .list-block ul li a .pub-time {
+                  font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+                  font-size: 12px;
+                  color: #777; }
     #main .content-wrapper .right-sidebar {
       float: left;
       width: 25%;

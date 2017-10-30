@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use frontend\models\Article;
 
 /**
  * This is the model class for table "article".
@@ -46,4 +47,11 @@ class ArticleCate extends \yii\db\ActiveRecord
             'cate' => 'CATE',
         ];
     }
+    //获取文章的分类
+    public function getCates()
+    {
+        return $this->hasMany(Article::className(),['cate_id'=>'id']);
+
+    }
+
 }

@@ -635,7 +635,7 @@ class RoboFile extends \Robo\Tasks
             ->text($guides_list)
             ->run();
 
-        $this->taskWriteToFile('docs/index.html')
+        $this->taskWriteToFile('docs/index.js')
             ->line('---')
             ->line('layout: doc')
             ->line('title: Codeception Documentation')

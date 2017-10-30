@@ -89,14 +89,22 @@ class BlogController extends Controller
     //文章分类页
     public function actionCate()
     {
+        $cateId = Yii::$app->request->get('id');
         $cateQuery = ArticleCate::find()->all();
         $tagQuery = ArticleTag::find()->all();
-        $articleAndCate = Article::find()->with('cates')->asArray()->all();               //文章和分类数据
-        print_r($articleAndCate);
+        $curCateArticle= ArticleCate::find()->with('cates')->where(['id'=>$cateId])->asArray()->all();
+        $articleAndCate = ArticleCate::find()->with('cates')->asArray()->all();               //文章和分类数据
+        if($cateId){
+            $cateArticles=$curCateArticle;
+        }else{
+            $cateArticles=$articleAndCate;
+
+        }
 
         return $this->render('cate', [
             'cates' => $cateQuery,
             'tags' => $tagQuery,
+            'cateArticles'=>$cateArticles
         ]);
     }
 

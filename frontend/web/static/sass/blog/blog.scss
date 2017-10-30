@@ -1,5 +1,5 @@
 /*背景图标*/
-$bg-icon: article-detail-tag, article-time, article-search, article-sort, article-timeline, article-cate, article-tag;
+$bg-icon: article-notfound,article-detail-tag, article-time, article-search, article-sort, article-timeline, article-cate, article-tag;
 @each $bg-icon-list in $bg-icon {
   .#{$bg-icon-list}-icon {
     display: inline-block;
@@ -170,41 +170,56 @@ $bg-icon: article-detail-tag, article-time, article-search, article-sort, articl
       }
 
       /*=====标签页=====*/
-      .tag-page-info {
-        .all-tag {
-          ul {
-            font-size: 0;
-            li {
-              display: inline-block;
-              a {
-                display: block;
-                font-size: 13px;
-                padding: 5px 10px;
-                color: #1ABFBC;
-                border: 1px solid #1ABFBC;
-                border-radius: 8px;
-                margin: 5px;
-              }
+      .tag-page-info,.cate-page-info {
+        padding: 15px 0;
 
-            }
+        //暂无文章提示
+        .article-notfound{
+          margin-top: 40px;
+          text-align: center;
+            width: 100px;
+            height: 100px;
+          }
+
+          .no-article-text {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
           }
         }
-        //标签下的文章列表
-        .tag-list {
-          margin-top: 20px;
+
+
+
+        //标签和分类下的文章列表
+        .list-block {
+          margin-bottom: 45px;
+          padding-bottom: 15px;
+          border-bottom: 1px dashed #ccc;
 
           //标签名
           h3 {
-
+            color: #0ABFBC;
+            margin-bottom: 20px;
           }
           //文章列表
-          .cur-tag-article-list {
-            list-style:circle ;
+          ul {
+            padding-left: 15px;
               li{
+                font-size: 15px;
+                color: #666;
+                list-style-type: disc;
                 a {
-                  font-size: 16px;
-                  color: #444444;
-                  margin: 10px 0;
+                  display: block;
+                  color: #666;
+                  margin-top: 10px;
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                  .pub-time {
+                    font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
+                    font-size: 12px;
+                    color: #777;
+                  }
                 }
               }
           }
